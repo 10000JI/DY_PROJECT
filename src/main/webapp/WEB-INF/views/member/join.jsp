@@ -37,73 +37,85 @@
                 <!-- topHeader -->
     			<c:import url="../temp/topHeader.jsp"></c:import>
     			<!-- topHeader -->	
-				<div class="bg-light rounded-3 py-5 px-4 px-md-5 mb-5">
-                        <div class="text-center mb-5">
-                            <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i class="bi bi-envelope"></i></div>
-                            <h1 class="fw-bolder">MemberJoin Page</h1>
-                            <p class="lead fw-normal text-muted mb-0">We'd love to hear from you</p>
-                        </div>
-                        <div class="row gx-5 justify-content-center">
-                            <div class="col-lg-8 col-xl-6">
-                               
-                                    <form:form id="contactForm" modelAttribute="memberVO" action="./join" method="post" >
-                                    <!-- UserName input-->
-                                    <div class="form-floating mb-3">
-                                        <form:input path="username" id="username" cssClass="form-control"/>
+				<div class="row">
+                    <div class="col-lg-5 d-none d-lg-block bg-register-image"></div>
+                    <div class="col-lg-7">
+                        <div class="p-5">
+                            <div class="text-center">
+                                <h1 class="h4 text-gray-900 mb-4">Create an Account!</h1>
+                            </div>
+                            <form:form id="contactForm" modelAttribute="memberVO" action="./join" method="post" cssClass="user" >
+                                <div class="form-group row">
+                                    <div class="col-sm-6 mb-3 mb-sm-0">
+                                        <form:input path="username" id="username" cssClass="form-control form-control-user"/>
                                         <form:label path="username">User name</form:label>
                                         <form:errors path="username"></form:errors>
                                     </div>
-                                    <!-- Password input-->
-                                    <div class="form-floating mb-3">
-                                    	<form:password path="password" id="passWord" cssClass="form-control"/>
-                                        <form:label path="password">passWord</form:label>
-                                        <form:errors path="password"></form:errors>
-                                    </div>
-                                    
-                                     <!-- PasswordCheck input-->
-                                     <div class="form-floating mb-3">
-                                        <form:password cssClass="form-control" id="passWordCheck" path="passWordCheck" />
-                                        <form:label path="passWordCheck">passWordCheck</form:label>
-                                        <form:errors path="passWordCheck"></form:errors>
-                                    </div>
-                                  
-                                  	 <!-- Name input-->
-                                    <div class="form-floating mb-3">
-                                    <form:input path="name" id="name" cssClass="form-control"/>
+                                    <div class="col-sm-6">
+                                        <form:input path="name" id="name" cssClass="form-control form-control-user" />
                                         <form:label path="name">name</form:label>
                                         <form:errors path="name"></form:errors>
                                     </div>
-                                    
-                                    <!-- email input-->
-                                    <div class="form-floating mb-3">
-									<input name="email" id="email" type="email" class="form-control" />
+                                </div>
+                                
+                                <div class="form-group row">
+                                    <div class="col-sm-6 mb-3 mb-sm-0">
+                                        <form:password path="password" id="passWord" cssClass="form-control form-control-user"/>
+                                        <form:label path="password">passWord</form:label>
+                                        <form:errors path="password"></form:errors>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <form:password cssClass="form-control form-control-user" id="passWordCheck" path="passWordCheck" />
+                                        <form:label path="passWordCheck">passWordCheck</form:label>
+                                        <form:errors path="passWordCheck"></form:errors>
+                                    </div>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <input name="email" id="email" type="email" class="form-control form-control-user" />
 									<label for="email">email</label>
 									<form:errors path="email"></form:errors>
-									</div>
-									
-									<a class="btn btn-primary" id="sendMail">인증번호</a>
-									
-									 <!-- emailCheck input-->
-                                    <div class="form-floating mb-3">
-                                     <input class="form-control" id="emailCheck" name="emailCheck" type="text" />
+                                </div>
+                                
+                                <a class="btn btn-info btn-icon-split">
+                                        <span class="icon text-white-50">
+                                            <i class="fas fa-check"></i>
+                                        </span>
+                                        <span class="text" id="sendMail">인증번호</span>
+                                 </a>
+                                 
+                                <div class="form-group">
+                                     <input class="form-control form-control-user" id="emailCheck" name="emailCheck" type="text" />
                                         <label for="emailCheck">emailCheck</label>
                                         <span id="emailCheckValidation"></span>
-                                    </div>
-								
-                                    
-                                     <!-- Birth input-->
-                                    <div class="form-floating mb-3">
-                                     <input class="form-control" id="birth" name="birth" type="date" data-sb-validations="required,email" />
+                                </div>
+                                
+                                <div class="form-group">
+                                     <input class="form-control form-control-user" id="birth" name="birth" type="date" data-sb-validations="required,email" />
                                         <label for="birth">birth</label>
                                         <form:errors path="birth"></form:errors>
-                                    </div>
-                                 
-                                    <!-- Submit Button-->
-                                    <div class="d-grid"><button class="btn btn-primary btn-lg" id="submitButton" type="submit">Submit</button></div>
-                                </form:form>
+                                </div>
+                                
+    
+                                <div class="d-grid"><button class="btn btn-primary btn-user btn-block" id="submitButton" type="submit">Submit</button></div>
+                                <hr>
+                                <a href="#" class="btn btn-google btn-user btn-block">
+                                    <i class="fab fa-google fa-fw"></i> Register with Google
+                                </a>
+                                <a href="#" class="btn btn-facebook btn-user btn-block">
+                                    <i class="fab fa-facebook-f fa-fw"></i> Register with Facebook
+                                </a>
+                            </form:form>
+                            <hr>
+                            <div class="text-center">
+                                <a class="small" href="forgot-password.html">Forgot Password?</a>
+                            </div>
+                            <div class="text-center">
+                                <a class="small" href="login.html">Already have an account? Login!</a>
                             </div>
                         </div>
                     </div>
+                </div>
             </div>
             <!-- End of Main Content -->
 

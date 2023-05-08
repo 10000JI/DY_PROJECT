@@ -31,8 +31,8 @@ public interface MemberDAO {
 //	//유저리스트
 //	public List<MemberVO> getUserList() throws Exception;
 	
-	//로그아웃할때 현재 시간
-	public int setLastTimeUpdate(MemberVO memberVO) throws Exception;
+//	//로그아웃할때 현재 시간
+//	public int setLastTimeUpdate(MemberVO memberVO) throws Exception;
 	
 //	public int setEnabledUpdate() throws Exception;
 //	

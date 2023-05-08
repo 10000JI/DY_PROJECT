@@ -58,9 +58,9 @@
 	UPDATE MEMBER SET PASSWORD=#{password}  WHERE USERNAME=#{username}
  	</update>
 	
-	<update id="setLastTimeUpdate" parameterType="MemberVO" >
+<!-- 	<update id="setLastTimeUpdate" parameterType="MemberVO" >
 	UPDATE MEMBER SET LASTTIME=now()  WHERE USERNAME=#{username}
- 	</update>
+ 	</update> -->
 <!--  	 	
  	<update id="setEnabledUpdate">
  	<![CDATA[  

@@ -1,5 +1,6 @@
 package com.dev.base.member;
 
+import java.util.Enumeration;
 import java.util.Random;
 import java.util.UUID;
 
@@ -10,6 +11,8 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextImpl;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -38,15 +41,15 @@ public class MemberController {
 	@Autowired
 	private PasswordEncoder passwordEncoder;
 
-	@GetMapping("logout")
-	public ModelAndView getLogout(HttpSession session) throws Exception{
-		ModelAndView mv = new ModelAndView();
-		MemberVO memberVO = (MemberVO) session.getAttribute("member");
-		int result = memberService.setLastTimeUpdate(memberVO);
-		session.invalidate();
-		mv.setViewName("redirect:../");
-		return mv;
-	}
+//	@GetMapping("logout")
+//	public ModelAndView getLogout(HttpSession session) throws Exception{
+//		ModelAndView mv = new ModelAndView();
+//		MemberVO memberVO = (MemberVO) session.getAttribute("member");
+//		int result = memberService.setLastTimeUpdate(memberVO);
+//		session.invalidate();
+//		mv.setViewName("redirect:../");
+//		return mv;
+//	}
 	
 	
 	@GetMapping("findPassword")
@@ -74,33 +77,35 @@ public class MemberController {
 	
 //	@GetMapping("info")
 //	public void info(HttpSession session) {
-//		String pw = "12345678";
-//		
-//		MemberVO memberVO = (MemberVO)memberService.loadUserByUsername("minji");
-//		
-//		log.error("{} ::::: ", memberVO.getPassword());
-//		log.error("{} ::::: ", passwordEncoder.encode(pw)); 
-//		log.error("{} ::::: ", memberVO.getPassword().equals(passwordEncoder.encode(pw)));
-//		//똑같은 비번을 넣었는데도 불구하고 flase
-//		
-//		boolean check = passwordEncoder.matches(pw, memberVO.getPassword());
-//		log.error("{} ::::::",check);
+////		String pw = "12345678";
+////		
+////		MemberVO memberVO = (MemberVO)memberService.loadUserByUsername("minji");
+////		
+////		log.error("{} ::::: ", memberVO.getPassword());
+////		log.error("{} ::::: ", passwordEncoder.encode(pw)); 
+////		log.error("{} ::::: ", memberVO.getPassword().equals(passwordEncoder.encode(pw)));
+////		//똑같은 비번을 넣었는데도 불구하고 flase
+////		
+////		boolean check = passwordEncoder.matches(pw, memberVO.getPassword());
+////		log.error("{} ::::::",check);
 //		
 //		//로그인 후 확인하는 과정
 //		log.error("================= Login Info =================");
 //		//세션 이름 알아내기 => SPRING_SECURITY_CONTEXT
-////		Enumeration<String> names = session.getAttributeNames();
-////		while(names.hasMoreElements()) {
-////			log.error("================={}=================",names.nextElement());
-////		}
+//		Enumeration<String> names = session.getAttributeNames();
+//		while(names.hasMoreElements()) {
+//			log.error("================={}=================",names.nextElement());
+//		}
 //		//세션 가져와서 정보 읽어보기
-////		Object obj = session.getAttribute("SPRING_SECURITY_CONTEXT");
-////		log.error("=={}==",obj);
-////		SecurityContextImpl contextImpl = (SecurityContextImpl)obj;
-////		Authentication authentication = contextImpl.getAuthentication();
-////		log.error("==Name:{}==",authentication.getName());
-////		log.error("===Detail:{}==",authentication.getDetails());
-////		log.error("==MemberVO:{}==",authentication.getPrincipal());
+//		Object obj = session.getAttribute("SPRING_SECURITY_CONTEXT");
+//		log.error("=={}==",obj);
+//		SecurityContextImpl contextImpl = (SecurityContextImpl)obj;
+//		Authentication authentication = contextImpl.getAuthentication();
+//		log.error("==Name:{}==",authentication.getName());
+//		log.error("===Detail:{}==",authentication.getDetails());
+//		log.error("==MemberVO:{}==",authentication.getPrincipal());
+//		MemberVO memberVO = (MemberVO)authentication.getPrincipal();
+//		log.error("==VO detail:{}==",memberVO.getRoleVOs().get(0).getRoleName());
 //		
 //	}
 	

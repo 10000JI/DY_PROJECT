@@ -101,10 +101,10 @@ public class MemberService implements UserDetailsService{
 //		return memberDAO.idDuplicateCheck(memberVO);
 //	}
 	
-	//로그아웃할때 현재 시간
-	public int setLastTimeUpdate(MemberVO memberVO) throws Exception{
-		return memberDAO.setLastTimeUpdate(memberVO);
-	}
+//	//로그아웃할때 현재 시간
+//	public int setLastTimeUpdate(MemberVO memberVO) throws Exception{
+//		return memberDAO.setLastTimeUpdate(memberVO);
+//	}
 	
 //	//비밀번호 재발급 받을때, 아이디 이메일 체크 하는 창
 //	public boolean idEmailCheck(MemberVO memberVO, BindingResult bindingResult) throws Exception{
