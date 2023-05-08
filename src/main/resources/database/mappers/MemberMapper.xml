@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+ <mapper namespace="com.dev.base.member.MemberDAO">
+ 	<insert id="setJoin" parameterType="MemberVO" >
+		INSERT INTO MEMBER(USERNAME,PASSWORD,NAME,EMAIL,BIRTH,ENABLED)
+		VALUES (#{username},#{password},#{name},#{email},#{birth},1)
+	</insert> 
+	
+	<insert id="setMemberRole" parameterType="Map">
+		INSERT INTO MEMBER_ROLE (USERNAME, NUM)
+		VALUES (#{username}, #{num})
+	</insert>
+	
+	<select id="getLogin" parameterType="MemberVO" resultMap="getLoginResult" >
+		SELECT M.username,M.password, M.enabled, M.email,M.birth, R.num, R.roleName
+		FROM MEMBER M
+			INNER JOIN 
+ 			MEMBER_ROLE MR
+ 			ON (M.USERNAME = MR.USERNAME)
+ 			INNER JOIN
+ 			ROLE R 
+ 			ON (MR.NUM = R.NUM)
+		WHERE M.USERNAME=#{username}
+		<!-- 패스워드를 여기서 비교하지 않는다(AND M.PASSWORD=#{paaword} 삭제함) -->
+	</select>
+	<resultMap type="MemberVO" id="getLoginResult">
+		<id column="username" property="username" />
+		<result column="password" property="password"/>
+		<result column="enabled" property="enabled"/>
+		<result column="email" property="email"/>
+		<result column="birth" property="birth"/>
+		<collection property="roleVOs" javaType="List" ofType="RoleVO">
+			<id column="num" property="num"/>
+			<result column="ROLENAME" property="roleName"/>
+		</collection>	
+	</resultMap>
+	
+<!--  	<select id="getList" resultType="MemberVO">
+		SELECT * FROM MEMBER
+	</select>
+	
+	<select id="getUserList" resultType="MemberVO">
+		SELECT USERNAME FROM MEMBER
+	</select> -->
+	
+	<select id="idDuplicateCheck" resultType="MemberVO" parameterType="MemberVO">
+		SELECT USERNAME FROM MEMBER WHERE USERNAME=#{username}
+	</select>
+	
+	<select id="emailCheck" resultType="MemberVO" parameterType="MemberVO">
+		SELECT EMAIL FROM MEMBER WHERE EMAIL=#{email}
+	</select>
+	
+	<update id="setPasswordUpdate" parameterType="MemberVO" >
+	UPDATE MEMBER SET PASSWORD=#{password}  WHERE USERNAME=#{username}
+ 	</update>
+	
+	<update id="setLastTimeUpdate" parameterType="MemberVO" >
+	UPDATE MEMBER SET LASTTIME=now()  WHERE USERNAME=#{username}
+ 	</update>
+<!--  	 	
+ 	<update id="setEnabledUpdate">
+ 	<![CDATA[  
+ 		UPDATE MEMBER SET ENABLED = 0
+		WHERE LASTTIME <= now()-INTERVAL 3 DAY
+	]]> 
+	UPDATE MEMBER SET ENABLED = 0
+	WHERE USERNAME 
+		IN 
+			(
+				SELECT username FROM MEMBER 
+				WHERE TIMESTAMPDIFF(DAY,LASTTIME,now()
+			)
+		>=3
+	)
+ 	</update>
+ 	
+ 	<select id="getBirthList" resultType="MemberVO">
+ 	SELECT * FROM MEMBER
+	WHERE DATE_FORMAT(birth,'%M-%D')=DATE_FORMAT(now(),'%M-%D')  
+ 	</select>  -->
+ </mapper>
