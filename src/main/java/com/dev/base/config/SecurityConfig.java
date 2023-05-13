@@ -13,8 +13,9 @@ import org.springframework.security.web.SecurityFilterChain;
 import com.dev.base.security.UserLoginFailHandler;
 import com.dev.base.security.UserLogoutSucessHandler;
 import com.dev.base.security.UserSuccessHandler;
+import com.dev.base.member.MemberSocialService;
+import com.dev.base.security.UserLogoutHandler;
 import com.dev.base.member.MemberService;
-
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig {
@@ -22,6 +23,12 @@ public class SecurityConfig {
 	@Autowired
 	private UserLogoutSucessHandler logoutSucessHandler;
 	
+	@Autowired
+	private UserLogoutHandler userLogoutHandler;
+	
+	@Autowired
+	private MemberSocialService memberSocialService;
+
 	
 	@Bean
 	//public 을 선언하면 default로 바꾸라는 메세지 출력
@@ -72,13 +79,14 @@ public class SecurityConfig {
 				.logoutUrl("/member/logout")
 				.logoutSuccessUrl("/")
 				.logoutSuccessHandler(logoutSucessHandler)//UserLogoutSucessHandler 객체 생성 (로그아웃 성공시)
+				//.addLogoutHandler(userLogoutHandler) //UserLogoutHandler 객체 생성(단순 로그아웃)
 				.invalidateHttpSession(true)
 				.deleteCookies("JSESSIONID")
 				.permitAll()
-				.and();/*
+				.and()
 			.oauth2Login()
 				.userInfoEndpoint()
-				.userService(memberSocialService);*/
+				.userService(memberSocialService);
 //			.sessionManagement()
 //				.maximumSessions(1) //최대 허용 가능한 세션 수 => -1: 무제한, 1:한명만 접속
 //				.maxSessionsPreventsLogin(false); //false: 이전 사용자 세션 만료, true: 새로운 사용자 인증 실패

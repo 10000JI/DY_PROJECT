@@ -22,7 +22,7 @@ import lombok.Setter;
 
 @Setter
 @Getter
-public class MemberVO implements UserDetails{
+public class MemberVO implements UserDetails, OAuth2User{
 	//OAuth2User은 소셜 로그인에서 사용하는 인터페이스
 	@NotBlank
 	private String username;
@@ -42,7 +42,9 @@ public class MemberVO implements UserDetails{
 	
 	private List<RoleVO> roleVOs;
 	
-
+	//OAuth2User, token 정보 저장
+	private Map<String,Object> attributes;
+	
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		//? (무슨 타입일진 모르겠지만) GrantedAuthority 타입을 상속받겠다

@@ -105,6 +105,9 @@
                                 <a href="#" class="btn btn-facebook btn-user btn-block">
                                     <i class="fab fa-facebook-f fa-fw"></i> Register with Facebook
                                 </a>
+                                 <a href="/oauth2/authorization/kakao" class="btn btn-warning btn-user btn-block">
+                                 	<i class="fab fa-facebook-messenger fa-fw"></i> Register with Kakao
+                                 </a>
                             </form:form>
                             <hr>
                             <div class="text-center">
