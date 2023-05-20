@@ -46,11 +46,12 @@
                                 <!-- To make this form functional, sign up at-->
                                 <!-- https://startbootstrap.com/solution/contact-forms-->
                                 <!-- to get an API token!-->
-                                    <form:form id="contactForm" modelAttribute="memberVO" action="./findPassword" method="post" data-sb-form-api-token="API_TOKEN">
+                                    <form:form id="contactForm" modelAttribute="memberVO" action="./findPassword" method="post">
                                     <!-- UserName input-->
                                     <div class="form-floating mb-3">
                                         <form:input path="username" id="username" cssClass="form-control"/>
                                         <form:label path="username">User name</form:label>
+                                        <form:errors path="username"></form:errors>
                                     </div>
                                     
                                     <!-- email input-->

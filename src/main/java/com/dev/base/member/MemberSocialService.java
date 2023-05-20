@@ -6,6 +6,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.oauth2.client.registration.ClientRegistration;
 import org.springframework.security.oauth2.client.userinfo.DefaultOAuth2UserService;
 import org.springframework.security.oauth2.client.userinfo.OAuth2UserRequest;
@@ -18,7 +19,10 @@ import lombok.extern.slf4j.Slf4j;
 @Service
 @Slf4j
 public class MemberSocialService extends DefaultOAuth2UserService {
-
+	
+	@Autowired
+	public MemberDAO memberDAO;
+		
 	@Override
 	public OAuth2User loadUser(OAuth2UserRequest userRequest) throws OAuth2AuthenticationException {
 		// TODO Auto-generated method stub
@@ -55,12 +59,19 @@ public class MemberSocialService extends DefaultOAuth2UserService {
 			log.error("Key::{}",key);
 			log.error("Value::{}",map.get(key));
 		}
-		HashMap<String,Object> m =(HashMap<String,Object>) map.get("properties");
-		log.error("NichkName{}::",m.get("nickname"));
+		log.error("id{}::",map.get("id"));
+		log.error("id{}::",map.get("email"));
 		
 		MemberVO memberVO = new MemberVO();
 		memberVO.setAttributes(map); //OAuth2User정보 넣어야
-		memberVO.setUsername(m.get("nickname").toString());
+		memberVO.setUsername(map.get("id").toString());
+		HashMap<String,Object> m = (HashMap<String,Object>) map.get("kakao_account");
+		memberVO.setEmail(m.get("email").toString());
+		
+		m = (HashMap<String,Object>) map.get("properties");
+		log.error("NichkName{}::",m.get("nickname"));
+		memberVO.setName(m.get("nickname").toString());
+		
 		
 		List<RoleVO> roleVOs = new ArrayList<>();
 		//DB 조회
@@ -69,6 +80,17 @@ public class MemberSocialService extends DefaultOAuth2UserService {
 		roleVOs.add(roleVO);
 		memberVO.setRoleVOs(roleVOs);
 		memberVO.setEnabled(true);
+		
+		Map<String, Object> map1 = new HashMap<>();
+		map1.put("username", memberVO.getUsername());
+		map1.put("num", 3);
+		try {
+			int result = memberDAO.setJoin(memberVO);
+			result = memberDAO.setMemberRole(map1);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return memberVO;
 	}
 }

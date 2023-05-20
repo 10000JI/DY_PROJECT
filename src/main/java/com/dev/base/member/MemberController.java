@@ -62,9 +62,12 @@ public class MemberController {
 	@PostMapping("findPassword")
 	public ModelAndView findPassword(@Valid MemberVO memberVO, BindingResult bindingResult) throws Exception {
 		ModelAndView mv = new ModelAndView();
-		if(bindingResult.hasErrors()) {
-			log.error("======검증 실패======");
+		boolean check  =memberService.idEmailCheck(memberVO, bindingResult);
+		
+		if(check) {
 			mv.setViewName("member/findPassword");
+			log.error("======검증 실패======");
+			return mv;
 		}
 		String pass = memberService.generatePassword();
 		log.error("======이메일 전송한다======");

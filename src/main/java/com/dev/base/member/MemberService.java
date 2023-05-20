@@ -52,7 +52,7 @@ public class MemberService implements UserDetailsService{
 		return memberVO;
 	}
 
-	//패스워드가 일치하는지 검증하는 메서드 + 이메일 중복 체크 메서드
+	//패스워드가 일치하는지 검증하는 메서드 + 아이디 중복 체크 메서드
 	public boolean memberCheck(MemberVO memberVO, BindingResult bindingResult) throws Exception{
 		boolean result = false;
 		//false : error가 없음, 검증 성공
@@ -77,6 +77,7 @@ public class MemberService implements UserDetailsService{
 		
 		return result;
 	}
+	
 	
 	public MemberVO getLogin(MemberVO memberVO) throws Exception{
 		return memberDAO.getLogin(memberVO);
@@ -106,25 +107,31 @@ public class MemberService implements UserDetailsService{
 //		return memberDAO.setLastTimeUpdate(memberVO);
 //	}
 	
-//	//비밀번호 재발급 받을때, 아이디 이메일 체크 하는 창
-//	public boolean idEmailCheck(MemberVO memberVO, BindingResult bindingResult) throws Exception{
-//			boolean result = false;
-//			//false : 이메일 전송해야됨
-//			//true :  이메일 전송하면 안됨
-//			
+	//비밀번호 재발급 받을때, 아이디 이메일 체크 하는 창
+	public boolean idEmailCheck(MemberVO memberVO, BindingResult bindingResult) throws Exception{
+			boolean result = false;
+			//false : 이메일 전송해야됨
+			
+			//true :  이메일 전송하면 안됨
+			
 //			//1. annotation의 검증 결과
 //			result = bindingResult.hasErrors();
-//			
-//			//2. 아이디 이메일 체크
-//			MemberVO checkMember = memberDAO.idDuplicateCheck(memberVO);
-//			MemberVO checkEamil = memberDAO.emailCheck(memberVO);
-//			 if(checkMember != null && checkEamil != null ) {
-//				 result=true;
-//				 bindingResult.rejectValue("email", "member.checkEmail.check");
-//			 }
-//			
-//			return result;
-//		}
+			//2. 아이디 이메일 체크
+			MemberVO checkMember = memberDAO.idDuplicateCheck(memberVO);
+			MemberVO checkEmail = memberDAO.emailCheck(memberVO);
+			 if(checkMember != null && checkEmail == null) {
+				 result=true;
+				 bindingResult.rejectValue("email", "member.checkEmail.check");
+			 } else if (checkMember == null && checkEmail != null) {
+				 result=true;
+				 bindingResult.rejectValue("username", "member.checkUsername.check");
+			 } else if (checkMember == null && checkEmail == null) {
+				 result=true;
+				 bindingResult.rejectValue("email", "member.checkEmail.check");
+				 bindingResult.rejectValue("username", "member.checkUsername.check");
+			 }
+			return result;
+		}
 	
 	public String generatePassword() {
         String letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
