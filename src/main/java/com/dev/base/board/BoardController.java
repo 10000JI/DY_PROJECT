@@ -1,5 +1,7 @@
 package com.dev.base.board;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -25,6 +27,8 @@ public class BoardController {
 	@GetMapping("add")
 	public ModelAndView setInsert(@ModelAttribute BoardVO boardVO) throws Exception{
 		ModelAndView mv = new ModelAndView();
+		List<StackVO> stackVO = boardService.getStackList();
+		mv.addObject("list", stackVO);
 		mv.setViewName("board/add");
 		return mv;
 	}

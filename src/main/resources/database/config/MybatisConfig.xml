@@ -12,6 +12,7 @@
 		<typeAlias type="com.dev.base.member.RoleVO" alias="RoleVO"/>
 		<typeAlias type="com.dev.base.board.BoardVO" alias="BoardVO"/>
 		<typeAlias type="com.dev.base.board.BoardFileVO" alias="BoardFileVO"/>
+		<typeAlias type="com.dev.base.board.StackVO" alias="StackVO"/>
 		
 	</typeAliases>
 </configuration>

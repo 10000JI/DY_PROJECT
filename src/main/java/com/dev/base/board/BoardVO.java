@@ -1,6 +1,7 @@
 package com.dev.base.board;
 
 import java.sql.Date;
+import java.util.List;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
@@ -17,4 +18,6 @@ public class BoardVO {
 	private String writer;
 	private Date regDate;
 	private Long Hit;
+	
+	private List<StackVO> stackVOs; 
 }

@@ -13,4 +13,8 @@
  		INSERT INTO BOARDFILES (NUM, FILENAME,ORINAME)
  		VALUES(#{num}, #{fileName},#{oriName})
  	</insert>
+ 	
+ 	<select id="getStackList" resultType="StackVO">
+ 		select * from STACK
+ 	</select>
  </mapper>

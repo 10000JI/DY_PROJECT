@@ -110,18 +110,12 @@
                                     <!DOCTYPE html>
 
 				    <div class="container">
+				    	<c:forEach items="${list}" var="dto">
 				            <div class="custom-control custom-checkbox">
-				                <input class="custom-control-input" type="checkbox" name="체크박스이름" value="값1" id="체크박스1">
-				                <label class="custom-control-label" for="체크박스1">체크박스 1</label>
+				                <input class="custom-control-input" type="checkbox" name="${dto.stackNum}" value="${dto.stackNum}" id="${dto.stackNum}">
+				                <label class="custom-control-label" for="${dto.stackNum}">${dto.stack}</label>
 				            </div>
-				            <div class="custom-control custom-checkbox">
-				                <input class="custom-control-input" type="checkbox" name="체크박스이름" value="값2" id="체크박스2">
-				                <label class="custom-control-label" for="체크박스2">체크박스 2</label>
-				            </div>
-				            <div class="custom-control custom-checkbox">
-				                <input class="custom-control-input" type="checkbox" name="체크박스이름" value="값3" id="체크박스3">
-				                <label class="custom-control-label" for="체크박스3">체크박스 3</label>
-				            </div> 
+						</c:forEach>
 				     </div>          
                                     <!-- Submit Button-->
                                     <div class="d-grid"><button class="btn btn-primary btn-lg" id="submitButton" type="submit">Submit</button></div>
