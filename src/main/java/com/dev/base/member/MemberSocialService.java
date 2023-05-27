@@ -19,30 +19,16 @@ import lombok.extern.slf4j.Slf4j;
 @Service
 @Slf4j
 public class MemberSocialService extends DefaultOAuth2UserService {
-	
 	@Autowired
 	public MemberDAO memberDAO;
-		
 	@Override
 	public OAuth2User loadUser(OAuth2UserRequest userRequest) throws OAuth2AuthenticationException {
 		// TODO Auto-generated method stub
 		// kakao에서 로그인 처리 후 실행
 		
-		log.error("{} :::: social",userRequest.getAccessToken()); 
-		
-		ClientRegistration registration = userRequest.getClientRegistration();
-		
-		log.error("{} :::: ",registration.getRegistrationId());
-		log.error("{} :::: ",registration.getScopes());
-		log.error("{} :::: ",registration.getClientName());
-		log.error("{} :::: ",registration.getClientId());
-		OAuth2User user =  super.loadUser(userRequest);
-		log.error("{} :::: ",user.getName());
-		
 		return this.socialJoinCheck(userRequest);
 		//호출
 	}
-	
 	//카카오로그인이나 네이버로그인할때 따로 메소드 생성하라고 빼놓았다
 	//카카오로그인이기 때문에 카카오 로그인 호출
 	private OAuth2User socialJoinCheck(OAuth2UserRequest auth2UserRequest) {

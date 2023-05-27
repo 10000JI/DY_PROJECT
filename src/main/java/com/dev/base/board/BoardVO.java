@@ -19,5 +19,5 @@ public class BoardVO {
 	private Date regDate;
 	private Long Hit;
 	
-	private List<StackVO> stackVOs; 
+	private List<StackVO> stackSVOs; 
 }
