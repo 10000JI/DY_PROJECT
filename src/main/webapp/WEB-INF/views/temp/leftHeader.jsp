@@ -47,7 +47,6 @@
                      	 <sec:authorize access="!isAuthenticated()">
                         <a class="collapse-item" href="/member/login">Login</a>
                         <a class="collapse-item" href="/member/join">Join</a>
-                        <a class="collapse-item" href="/member/findPassword">Forgot Password</a>
                      	</sec:authorize>
                     </div>
                 </div>

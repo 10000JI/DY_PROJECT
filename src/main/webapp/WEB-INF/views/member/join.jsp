@@ -98,21 +98,15 @@
                                 
     
                                 <div class="d-grid"><button class="btn btn-primary btn-user btn-block" id="submitButton" type="submit">Submit</button></div>
-                                <hr>
-                                <a href="#" class="btn btn-google btn-user btn-block">
+                               <br>
+                                <!-- <a href="#" class="btn btn-google btn-user btn-block">
                                     <i class="fab fa-google fa-fw"></i> Register with Google
-                                </a>
+                                </a> -->
                                  <a href="/oauth2/authorization/kakao" class="btn btn-warning btn-user btn-block">
                                  	<i class="fab fa-facebook-messenger fa-fw"></i> Register with Kakao
                                  </a>
                             </form:form>
-                            <hr>
-                            <div class="text-center">
-                                <a class="small" href="forgot-password.html">Forgot Password?</a>
-                            </div>
-                            <div class="text-center">
-                                <a class="small" href="login.html">Already have an account? Login!</a>
-                            </div>
+                           
                         </div>
                     </div>
                 </div>

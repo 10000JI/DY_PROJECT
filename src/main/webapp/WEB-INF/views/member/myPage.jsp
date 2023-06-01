@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -37,7 +38,80 @@
                 <!-- topHeader -->
     			<c:import url="../temp/topHeader.jsp"></c:import>
     			<!-- topHeader -->
-    			<div class="container-fluid">
+				<div class="container" style="margin-top: 100px;">
+					<div class="main-body">
+						<div class="row">
+							<div class="col-lg-4">
+								<div class="card">
+									<div class="card-body">
+										<div class="d-flex flex-column align-items-center text-center">
+											<img src="https://cdn-icons-png.flaticon.com/512/847/847969.png?w=826&t=st=1685410931~exp=1685411531~hmac=aba334bfa86956cf27ba3e0af2fab07921b71a199210d274bef4d91c7be12a95"
+												alt="Admin" class="rounded-circle p-1 bg-secondary"
+												width="110">
+											<div class="mt-3">
+												<h4>${memberVO.username}</h4>
+												<p class="text-secondary mb-1">Developer</p>
+												<div class="custom-padding" style="background-color: white; padding: 58px;"></div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-lg-8">
+								<div class="card">
+									<form:form action="./update" modelAttribute="memberVO" method="post" cssClass="member" >
+									<div class="card-body">
+										<div class="row mb-3">
+											<div class="col-sm-3">
+												<h6 class="mb-0">Name</h6>
+											</div>
+											<div class="col-sm-9 text-secondary">
+												<form:input type="text" cssClass="form-control" path="name" />
+												<form:errors path="name"></form:errors>
+											</div>
+										</div>
+										<%-- <div class="row mb-3">
+											<div class="col-sm-3">
+												<h6 class="mb-0">Name</h6>
+											</div>
+											<div class="col-sm-9 text-secondary">
+												<input type="text" class="form-control" name="name" value="<sec:authentication property="Principal.name"/>">
+											</div>
+										</div> --%>
+										<div class="row mb-3">
+											<div class="col-sm-3">
+												<h6 class="mb-0">Email</h6>
+											</div>
+											<div class="col-sm-9 text-secondary">
+												<form:input type="text" cssClass="form-control" path="email"/>
+												<form:errors path="email"></form:errors>
+											</div>
+										</div>
+										<div class="row mb-3">
+											<div class="col-sm-3">
+												<h6 class="mb-0">Birth</h6>
+											</div>
+											<div class="col-sm-9 text-secondary">
+												<input class="form-control" id="birth" name="birth" type="date" value="${memberVO.birth}"/>
+												<form:errors path="birth"></form:errors>
+											</div>
+										</div>
+										
+										<div class="row">
+											<div class="col-sm-3"></div>
+											<div class="col-sm-9 text-secondary">
+												<button type="submit" class="btn btn-primary px-4"
+													>수정하기</button>
+											</div>
+										</div>
+									</div>
+									</form:form>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<%-- <div class="container-fluid">
     			<div class="row">
 					<div class="col-md-6">
 						<div class="card">
@@ -56,7 +130,7 @@
 						</div>
 					</div>
 				</div>	
-				</div>
+				</div> --%>
             </div>
             <!-- End of Main Content -->
 

@@ -57,10 +57,8 @@
                                             </div>
                                         </div>
                                         <div class="d-grid"><button class="btn btn-primary btn-user btn-block" id="submitButton" type="submit">Login</button></div>
-                                        <hr>
-                                        <a href="index.html" class="btn btn-google btn-user btn-block">
-                                            <i class="fab fa-google fa-fw"></i> Login with Google
-                                        </a>
+                                        <br>
+                                        
                                         <a href="/oauth2/authorization/kakao" class="btn btn-warning btn-user btn-block">
                                             <i class="fab fa-facebook-messenger fa-fw"></i> Login with Kakao
                                         </a>
@@ -72,6 +70,7 @@
                                     <div class="text-center">
                                         <a class="small" href="register.html">Create an Account!</a>
                                     </div>
+                                    <div class="custom-padding" style="padding: 100px;"></div>
                                 </div>
                             </div>
                         </div>

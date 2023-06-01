@@ -157,7 +157,18 @@ public class MemberService implements UserDetailsService{
 
         return password;
     }
+	
+	
+	public MemberVO getlistOne(MemberVO memberVO) throws Exception{
+	return memberDAO.getlistOne(memberVO);
+}
+	
+	
 	public int setPasswordUpdate(MemberVO memberVO) throws Exception{
 		return memberDAO.setPasswordUpdate(memberVO);
+	}
+	
+	public int setUpdate(MemberVO memberVO) throws Exception{
+		return memberDAO.setUpdate(memberVO);
 	}
 }

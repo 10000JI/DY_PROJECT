@@ -1,6 +1,7 @@
 package com.dev.base.member;
 
 import java.util.Enumeration;
+import java.util.List;
 import java.util.Random;
 import java.util.UUID;
 
@@ -12,10 +13,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.context.SecurityContextImpl;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -183,8 +186,50 @@ public class MemberController {
 //	}
 	
 	@GetMapping("myPage")
-	public void getMyPage() throws Exception{
+	public ModelAndView getMyPage(@ModelAttribute MemberVO memberVO) throws Exception{
+		ModelAndView mv = new ModelAndView();
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String name1 = authentication.getName();;
+        memberVO.setUsername(name1);
+        log.error("====={}=====",name1);
+        memberVO = memberService.getlistOne(memberVO);
+		mv.addObject("memberVO", memberVO);
+        mv.setViewName("member/myPage");
+		return mv;
+
+	}
+	
+	
+	@PostMapping("update")
+	public ModelAndView setUpdate(@Valid MemberVO memberVO, BindingResult bindingResult) throws Exception{
+		List<FieldError> errors= bindingResult.getFieldErrors();
+		for (FieldError fieldError : errors) {
+			log.error("==fieldError:{}==",fieldError.getField());
+		}
 		
+		
+		ModelAndView mv = new ModelAndView();
+		boolean check = bindingResult.hasErrors();
+		if(check) {
+			log.warn("======검증에 실패======");
+			for (FieldError fieldError : errors) {
+				if(fieldError.getField().equals("password")||fieldError.getField().equals("username")) {
+					check=false;
+					break;
+				}
+			}
+			if(check) {
+				mv.setViewName("member/myPage");
+				return mv;
+			}
+			
+		}
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String name1 = authentication.getName();
+        memberVO.setUsername(name1);
+		int result = memberService.setUpdate(memberVO);
+		mv.setViewName("redirect:../");
+		return mv;
 	}
 	
 	@PostMapping("/checkMail") // AJAX와 URL을 매핑시켜줌 

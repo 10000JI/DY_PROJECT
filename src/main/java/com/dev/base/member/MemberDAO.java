@@ -28,6 +28,12 @@ public interface MemberDAO {
 	//재발급된 패스워드 업데이트
 	public int setPasswordUpdate(MemberVO memberVO) throws Exception;
 	
+	//회원정보수정
+	public int setUpdate(MemberVO memberVO) throws Exception;
+	
+	//회원 개별 리스트
+	public MemberVO getlistOne(MemberVO memberVO) throws Exception;
+	
 //	//유저리스트
 //	public List<MemberVO> getUserList() throws Exception;
 	
