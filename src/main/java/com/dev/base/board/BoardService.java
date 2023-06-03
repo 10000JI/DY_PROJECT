@@ -1,6 +1,8 @@
 package com.dev.base.board;
 
 import java.util.List;
+import java.util.Set;
+import java.util.HashSet;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -21,7 +23,7 @@ public class BoardService {
 	@Autowired
 	private FileManager fileManager;
 	
-	public int setInsert(BoardVO boardVO, MultipartFile[] multipartFiles) throws Exception {
+	public int setInsert(BoardVO boardVO, MultipartFile[] multipartFiles,List<String> selectedValuesInput) throws Exception {
 		int result = boardDAO.setInsert(boardVO);
 		if(multipartFiles != null) {
 			for(MultipartFile multipartFile:multipartFiles) {
@@ -31,11 +33,15 @@ public class BoardService {
 					BoardFileVO boardFileVO = new BoardFileVO();
 					boardFileVO.setFileName(fileName);
 					boardFileVO.setOriName(multipartFile.getOriginalFilename());
-					boardFileVO.setNum(boardVO.getNum());
 					result = boardDAO.setBoardFileAdd(boardFileVO);
 				}
 			}
 		}
+		Set<String> uniqueValues = new HashSet<>(selectedValuesInput); // 중복 제거
+	    
+	    for (String value : uniqueValues) {
+	        result = boardDAO.setStackAdd(value);
+	    }
 		return result;
 	}
 	

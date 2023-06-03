@@ -16,12 +16,9 @@
 	<!-- css -->
     <c:import url="../temp/style.jsp"></c:import>
     <!-- css -->
-  	<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
 	<style>
         
-        .container {
-            max-width: 500px;
+        .c1 {
             margin: 0 auto;
             background-color: #fff;
             border-radius: 5px;
@@ -45,6 +42,14 @@
             border-color: #0062cc;
         }
     </style>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  	<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
+
+<!--     <script src="/vendor/jquery-easing/jquery.easing.min.js"></script> -->
+
+    <script src="/js/sb-admin-2.min.js"></script>
 </head>
 
 <body id="page-top">
@@ -69,8 +74,7 @@
                     <div class="bg-light rounded-3 py-5 px-4 px-md-5 mb-5">
                         <div class="text-center mb-5">
                             <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i class="bi bi-envelope"></i></div>
-                            <h1 class="fw-bolder">Get in touch</h1>
-                            <p class="lead fw-normal text-muted mb-0">We'd love to hear from you</p>
+                            <h3 class="fw-bolder">모집만들기</h3>
                         </div>
                         <div class="row gx-5 justify-content-center">
                             <div class="col-lg-8 col-xl-6">
@@ -82,6 +86,7 @@
                                 <!-- https://startbootstrap.com/solution/contact-forms-->
                                 <!-- to get an API token!-->
                                    <form:form id="contactForm" data-sb-form-api-token="API_TOKEN" modelAttribute="boardVO" cssClass="" action="./add" method="post" enctype="multipart/form-data">                                    <!-- Title input-->
+                                    <input type="hidden" id="selectedValuesInput" name="selectedValuesInput">
                                     <div class="form-floating mb-3">
                                         <form:input path="title" id="title" cssClass="form-control"/>
                                         <label for="title">title</label>
@@ -95,30 +100,58 @@
                                     
                                     <!-- Writer address input-->
                                     <div class="form-floating mb-3">
-                                        <form:input path="writer" id="writer" cssClass="form-control"/>
+                                        <form:input  path="writer" id="writer" cssClass="form-control"/>
                                         <label for="writer">Writer</label>
                                         <form:errors path="writer"></form:errors>
                                     </div>
                                                                                    
                                     <!-- Contents input-->
                                     <div class="form-floating mb-3">
-                                        <textarea class="form-control check" id="contents" name="contents" placeholder="Enter your contents here..." style="height: 10rem" data-sb-validations="required"></textarea>
+                                        <textarea class="form-control" id="contents" name="contents" placeholder="Enter your contents here..." style="height: 10rem"></textarea>
                                        	
                                         <div class="invalid-feedback" data-sb-feedback="message:required">A message is required.</div>
                                     </div>
                                     
                                     <!DOCTYPE html>
 
-				    <div class="container">
+<%-- 				    <div class="container c1">
 				    	<c:forEach items="${list}" var="dto">
 				            <div class="custom-control custom-checkbox">
-				                <input class="custom-control-input" type="checkbox" name="${dto.stackNum}" value="${dto.stackNum}" id="${dto.stackNum}">
+				                <input class="custom-control-input checkboxes" type="checkbox" value="${dto.stackNum}" id="${dto.stackNum}">
 				                <label class="custom-control-label" for="${dto.stackNum}">${dto.stack}</label>
 				            </div>
 						</c:forEach>
-				     </div>          
+				     </div>    --%>
+				     <div class="container c1">
+				    	
+				            <div class="custom-control custom-checkbox">
+				                <input class="custom-control-input checkboxes" type="checkbox" value="1" id="1">
+				                <label class="custom-control-label" for="1">Java</label>
+				            </div>
+						
+				            <div class="custom-control custom-checkbox">
+				                <input class="custom-control-input checkboxes" type="checkbox" value="2" id="2">
+				                <label class="custom-control-label" for="2">Javascript</label>
+				            </div>
+						
+				            <div class="custom-control custom-checkbox">
+				                <input class="custom-control-input checkboxes" type="checkbox" value="3" id="3">
+				                <label class="custom-control-label" for="3">Node.js</label>
+				            </div>
+						
+				            <div class="custom-control custom-checkbox">
+				                <input class="custom-control-input checkboxes" type="checkbox" value="4" id="4">
+				                <label class="custom-control-label" for="4">Spring</label>
+				            </div>
+						
+				            <div class="custom-control custom-checkbox">
+				                <input class="custom-control-input checkboxes" type="checkbox" value="5" id="5">
+				                <label class="custom-control-label" for="5">Python</label>
+				            </div>
+						
+				     </div>       
                                     <!-- Submit Button-->
-                                    <div class="d-grid"><button class="btn btn-primary btn-lg" id="submitButton" type="submit">Submit</button></div>
+                                    <div class="d-grid my-5"><button class="btn btn-primary btn-lg" id="submitButton" type="button">Submit</button></div>
                                 </form:form>
                             </div>
                         </div>
@@ -141,9 +174,36 @@
         <i class="fas fa-angle-up"></i>
     </a>
 
-	<c:import url="../temp/js.jsp"></c:import>
 	<script>
 		$('#contents').summernote();
+
+
 	</script>
+	
+	<script>
+	
+	$(document).ready(function() {
+	  // Submit 버튼 클릭 시
+	  $('#submitButton').click(function(e) {
+	    e.preventDefault(); // 폼의 기본 동작을 막음
+
+	    let selectedValues = [];
+	    $('.checkboxes:checked').each(function() {
+	      selectedValues.push($(this).val());
+	      console.log(selectedValues.push($(this).val()))
+	    });
+	    
+	    let selectedValuesString = selectedValues.join(',');
+
+	    // selectedValues 값을 숨겨진 input 요소에 설정
+	    $('#selectedValuesInput').val(selectedValuesString);
+	    
+	    if ($('.checkboxes:checked').length > 0) {
+	        $('#contactForm').submit();
+	    }
+	  });
+	});
+	</script>
+	<%-- <c:import url="../temp/js.jsp"></c:import> --%>
 </body>
 </html>

@@ -11,5 +11,8 @@ public interface BoardDAO {
 	
 	public int setBoardFileAdd(BoardFileVO boardFileVO) throws Exception;
 	
+	public int setStackAdd(String string) throws Exception;
+	
 	public List<StackVO> getStackList() throws Exception;
+	
 }

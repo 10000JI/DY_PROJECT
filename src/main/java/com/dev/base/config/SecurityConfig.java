@@ -36,10 +36,11 @@ public class SecurityConfig {
 		//Security에서 무시해야하는 URL 패턴 등록
 		return web -> web
 				.ignoring()
-				.antMatchers("/images/**")
+				.antMatchers("/img/**")
 				.antMatchers("/js/**")
 				.antMatchers("/css/**")
-				.antMatchers("/favicon/**");
+				.antMatchers("/scss/**")
+				.antMatchers("/vendor/**");
 	}
 	
 	@Bean
@@ -52,14 +53,14 @@ public class SecurityConfig {
 			.authorizeRequests()
 				//URL과 권한매칭
 				.antMatchers("/").permitAll() //루트만 허용
-				.antMatchers("/member/join").permitAll()
-				.antMatchers("/notice/add").hasRole("MEMBER")
-				.antMatchers("/notice/update").hasRole("ADMIN") //Role를 가진 사람만 허용 
-				.antMatchers("/notice/delete").hasRole("ADMIN")
-				.antMatchers("/notice/*").permitAll() //순서 중요 => notice/add로 먼저 걸러준다
-				.antMatchers("/admin/**").hasRole("ADMIN") 
-				.antMatchers("/qna/add").hasAnyRole("ADMIN","MANAGER","MEMBER")
-				.antMatchers("/qna/list").permitAll()
+//				.antMatchers("/member/join").permitAll()
+//				.antMatchers("/notice/add").hasRole("MEMBER")
+//				.antMatchers("/notice/update").hasRole("ADMIN") //Role를 가진 사람만 허용 
+//				.antMatchers("/notice/delete").hasRole("ADMIN")
+//				.antMatchers("/notice/*").permitAll() //순서 중요 => notice/add로 먼저 걸러준다
+//				.antMatchers("/admin/**").hasRole("ADMIN") 
+//				.antMatchers("/qna/add").hasAnyRole("ADMIN","MANAGER","MEMBER")
+//				.antMatchers("/qna/list").permitAll()
 				//ADMIN 을 가지거나 MANAGER, MEMBER를 가진 사람만 허용 => 회원 한명당 하나의 ROLE를 가질때
 				//.anyRequest().authenticated()
 				//그외 나머지는 로그인 해야 볼수 있음 (authenticated = 인증)

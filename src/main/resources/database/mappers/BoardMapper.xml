@@ -5,16 +5,27 @@
   
  <mapper namespace="com.dev.base.board.BoardDAO">
  	<insert id="setInsert" parameterType="BoardVO">
- 		INSERT INTO BOARD (TITLE,CONTENTS,WRITER,REGDATE,HIT)
- 		VALUES(#{title},#{contents},#{writer},now(),0)
+ 		INSERT INTO BOARD (NUM,TITLE,CONTENTS,WRITER,REGDATE,HIT)
+ 		VALUES(#{num},#{title},#{contents},#{writer},now(),0)
  	</insert>
  	
  	 <insert id="setBoardFileAdd" parameterType="BoardFileVO">
  		INSERT INTO BOARDFILES (NUM, FILENAME,ORINAME)
- 		VALUES(#{num}, #{fileName},#{oriName})
+ 		VALUES(
+ 		(SELECT NUM FROM BOARD ORDER BY NUM DESC LIMIT 1)
+ 		, #{fileName},#{oriName})
+ 	</insert>
+ 	
+ 	<insert id="setStackAdd" parameterType="String">
+	INSERT INTO BOARDSTACK (NUM, STACKNUM)
+	VALUES (
+	(SELECT NUM FROM BOARD ORDER BY NUM DESC LIMIT 1),
+	#{stackNum}
+	)
  	</insert>
  	
  	<select id="getStackList" resultType="StackVO">
  		select * from STACK
  	</select>
+ 	
  </mapper>
