@@ -4,6 +4,20 @@
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
  <mapper namespace="com.dev.base.board.BoardDAO">
+  	<sql id="search">
+ 		<where>
+ 			<if test="kind == 'title'">
+ 				TITLE LIKE CONCAT('%',#{search},'%')
+ 			</if>
+ 			<if test="kind == 'contents'">
+ 				CONTENTS LIKE CONCAT('%',#{search},'%')
+ 			</if>
+ 			<if test="kind == 'writer'">
+ 				WRITER LIKE CONCAT('%',#{search},'%')
+ 			</if>
+ 		</where>
+ 	</sql>
+ 	
  	<insert id="setInsert" parameterType="BoardVO">
  		INSERT INTO BOARD (NUM,TITLE,CONTENTS,WRITER,REGDATE,HIT)
  		VALUES(#{num},#{title},#{contents},#{writer},now(),0)
@@ -27,5 +41,43 @@
  	<select id="getStackList" resultType="StackVO">
  		select * from STACK
  	</select>
+  	
+  	 <select id="getList" parameterType="Pager" resultType="BoardVO">
+		SELECT * FROM BOARD 
+		<include refid="search"></include>
+		ORDER BY NUM DESC
+		LIMIT #{startRow}, #{perPage}
+ 	</select>
  	
+ 	 	<select id="getTotalCount" resultType="Long" parameterType="Pager">
+		SELECT COUNT(NUM) FROM BOARD
+		<include refid="search"></include>
+ 	</select>
+ 	
+ 	<select id="getDetail" parameterType="BoardVO" resultMap="getDetailResult"> 
+		SELECT *
+		FROM BOARD N
+			LEFT JOIN
+			BOARDFILES NF
+			USING(NUM)
+		WHERE NUM=#{num}
+ 	</select>
+ 	
+ 	<select id="getFileDetail" parameterType="BoardFileVO" resultType="BoardFileVO">
+  		SELECT * FROM BOARDFILES WHERE FILENUM=#{fileNum}
+  	</select>
+ 	
+ 	 <resultMap type="BoardVO" id="getDetailResult">
+  		<id column="num" property="num"/>
+	  		<result column="title" property="title"/>
+	  		<result column="contents" property="contents"/>
+	  		<result column="writer" property="writer"/>
+	  		<result column="regDate" property="regDate"/>
+	  		<result column="hit" property="hit"/>
+		<collection property="boardFileVOs" javaType="List" ofType="BoardFileVO">
+			<id column="fileNum" property="fileNum"/>
+				<result column="fileName" property="fileName"/>
+				<result column="oriName" property="oriName"/>
+		</collection>  		
+  	</resultMap>
  </mapper>

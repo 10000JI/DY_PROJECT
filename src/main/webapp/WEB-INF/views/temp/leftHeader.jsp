@@ -25,7 +25,7 @@
             </li>
             
              <li class="nav-item">
-                <a class="nav-link" href="/">
+                <a class="nav-link" href="/board/list">
                     <i class="fab fa-fw fa-digital-ocean"></i>
                     <span>프로젝트/스터디 찾기</span></a>
             </li>

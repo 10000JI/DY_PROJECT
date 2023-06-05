@@ -20,6 +20,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.dev.base.member.MemberVO;
+import com.dev.base.util.Pager;
 
 import lombok.extern.log4j.Log4j;
 import lombok.extern.slf4j.Slf4j;
@@ -59,5 +60,19 @@ public class BoardController {
 	    mv.setViewName("redirect:/");
 	    return mv;
 	}
+	
+	//list
+		@GetMapping("list")
+		public ModelAndView getList(ModelAndView mv, Pager pager) throws Exception{
+		
+			log.info("search : {}", pager.getSearch());
+			log.info("kind : {}", pager.getKind());
+			
+			List<BoardVO> ar = boardService.getList(pager);
+			
+			mv.addObject("list", ar);
+			mv.setViewName("board/list");
+			return mv;
+		}
 
 }

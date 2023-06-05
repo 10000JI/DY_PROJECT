@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.dev.base.util.FileManager;
+import com.dev.base.util.Pager;
 
 @Service
 public class BoardService {
@@ -48,5 +49,12 @@ public class BoardService {
 	public List<StackVO>  getStackList() throws Exception{
 		List<StackVO> stackVO= boardDAO.getStackList();
 		return stackVO;
+	}
+	
+	public List<BoardVO> getList(Pager pager) throws Exception {
+		// TODO Auto-generated method stub
+		pager.makeStartRow();
+		pager.makeNum(boardDAO.getTotalCount(pager));
+		return boardDAO.getList(pager);
 	}
 }

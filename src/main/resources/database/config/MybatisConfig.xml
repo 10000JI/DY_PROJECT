@@ -13,6 +13,7 @@
 		<typeAlias type="com.dev.base.board.BoardVO" alias="BoardVO"/>
 		<typeAlias type="com.dev.base.board.BoardFileVO" alias="BoardFileVO"/>
 		<typeAlias type="com.dev.base.board.StackVO" alias="StackVO"/>
+		<typeAlias type="com.dev.base.util.Pager" alias="Pager"/>
 		
 	</typeAliases>
 </configuration>
