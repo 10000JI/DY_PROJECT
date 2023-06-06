@@ -7,7 +7,9 @@ import lombok.Setter;
 
 @Setter
 @Getter
-public class StackVO {
+public class BoardStackVO {
+	private Integer num;
 	private Integer stackNum;
-	private String stack;
+	
+	private List<StackVO> stackVOs; 
 }

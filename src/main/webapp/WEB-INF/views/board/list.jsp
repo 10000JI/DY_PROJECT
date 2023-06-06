@@ -39,160 +39,183 @@
 				<div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-2 text-gray-800">Tables</h1>
-                    <p class="mb-4">DataTables is a third party plugin that is used to generate the demo table below.
-                        For more information about DataTables, please visit the <a target="_blank" href="https://datatables.net">official DataTables documentation</a>.</p>
+                    <h1 class="h3 mb-2 text-gray-800">프로젝트/스터디 찾기</h1>
+                    <p class="mb-4">기술 스택 별 원하시는 프로젝트 및 스터디를 찾으세요!</p>
 
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
+                            <h6 class="m-0 font-weight-bold text-primary">프로젝트/스터디 게시판</h6>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
-                                <div id="dataTable_wrapper" class="dataTables_wrapper dt-bootstrap4"><div class="row"><div class="col-sm-12 col-md-6"><div class="dataTables_length" id="dataTable_length"><label>Show <select name="dataTable_length" aria-controls="dataTable" class="custom-select custom-select-sm form-control form-control-sm"><option value="10">10</option><option value="25">25</option><option value="50">50</option><option value="100">100</option></select> entries</label></div></div><div class="col-sm-12 col-md-6"><div id="dataTable_filter" class="dataTables_filter"><label>Search:<input type="search" class="form-control form-control-sm" placeholder="" aria-controls="dataTable"></label></div></div></div><div class="row"><div class="col-sm-12"><table class="table table-bordered dataTable" id="dataTable" width="100%" cellspacing="0" role="grid" aria-describedby="dataTable_info" style="width: 100%;">
-                                    <thead>
-                                        <tr role="row"><th class="sorting sorting_asc" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending" style="width: 219.2px;">Name</th><th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 330.2px;">Position</th><th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending" style="width: 159.2px;">Office</th><th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending" style="width: 77.2px;">Age</th><th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Start date: activate to sort column ascending" style="width: 151.2px;">Start date</th><th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Salary: activate to sort column ascending" style="width: 136.2px;">Salary</th></tr>
-                                    </thead>
-                                    <tfoot>
-                                        <tr><th rowspan="1" colspan="1">Name</th><th rowspan="1" colspan="1">Position</th><th rowspan="1" colspan="1">Office</th><th rowspan="1" colspan="1">Age</th><th rowspan="1" colspan="1">Start date</th><th rowspan="1" colspan="1">Salary</th></tr>
-                                    </tfoot>
-                                    <tbody>
-                                        
-                                        
-                                        
-                                        
-                                        
-                                        
-                                        
-                                        
-                                        
-                                        
-                                        
-                                        
-                                        
-                                        
-                                        
-                                        
-                                        
-                                        
-                                        
-                                        
-                                        
-                                        
-                                        
-                                        
-                                        
-                                        
-                                        
-                                        
-                                        
-                                        
-                                        
-                                        
-                                        
-                                        
-                                        
-                                        
-                                        
-                                        
-                                        
-                                        
-                                        
-                                        
-                                        
-                                        
-                                        
-                                        
-                                        
-                                        
-                                        
-                                        
-                                        
-                                        
-                                        
-                                        
-                                        
-                                        
-                                        
-                                    <tr class="odd">
-                                            <td class="sorting_1">Airi Satou</td>
-                                            <td>Accountant</td>
-                                            <td>Tokyo</td>
-                                            <td>33</td>
-                                            <td>2008/11/28</td>
-                                            <td>$162,700</td>
-                                        </tr><tr class="even">
-                                            <td class="sorting_1">Angelica Ramos</td>
-                                            <td>Chief Executive Officer (CEO)</td>
-                                            <td>London</td>
-                                            <td>47</td>
-                                            <td>2009/10/09</td>
-                                            <td>$1,200,000</td>
-                                        </tr><tr class="odd">
-                                            <td class="sorting_1">Ashton Cox</td>
-                                            <td>Junior Technical Author</td>
-                                            <td>San Francisco</td>
-                                            <td>66</td>
-                                            <td>2009/01/12</td>
-                                            <td>$86,000</td>
-                                        </tr><tr class="even">
-                                            <td class="sorting_1">Bradley Greer</td>
-                                            <td>Software Engineer</td>
-                                            <td>London</td>
-                                            <td>41</td>
-                                            <td>2012/10/13</td>
-                                            <td>$132,000</td>
-                                        </tr><tr class="odd">
-                                            <td class="sorting_1">Brenden Wagner</td>
-                                            <td>Software Engineer</td>
-                                            <td>San Francisco</td>
-                                            <td>28</td>
-                                            <td>2011/06/07</td>
-                                            <td>$206,850</td>
-                                        </tr><tr class="even">
-                                            <td class="sorting_1">Brielle Williamson</td>
-                                            <td>Integration Specialist</td>
-                                            <td>New York</td>
-                                            <td>61</td>
-                                            <td>2012/12/02</td>
-                                            <td>$372,000</td>
-                                        </tr><tr class="odd">
-                                            <td class="sorting_1">Bruno Nash</td>
-                                            <td>Software Engineer</td>
-                                            <td>London</td>
-                                            <td>38</td>
-                                            <td>2011/05/03</td>
-                                            <td>$163,500</td>
-                                        </tr><tr class="even">
-                                            <td class="sorting_1">Caesar Vance</td>
-                                            <td>Pre-Sales Support</td>
-                                            <td>New York</td>
-                                            <td>21</td>
-                                            <td>2011/12/12</td>
-                                            <td>$106,450</td>
-                                        </tr><tr class="odd">
-                                            <td class="sorting_1">Cara Stevens</td>
-                                            <td>Sales Assistant</td>
-                                            <td>New York</td>
-                                            <td>46</td>
-                                            <td>2011/12/06</td>
-                                            <td>$145,600</td>
-                                        </tr><tr class="even">
-                                            <td class="sorting_1">Cedric Kelly</td>
-                                            <td>Senior Javascript Developer</td>
-                                            <td>Edinburgh</td>
-                                            <td>22</td>
-                                            <td>2012/03/29</td>
-                                            <td>$433,060</td>
-                                        </tr></tbody>
-                                </table></div></div><div class="row"><div class="col-sm-12 col-md-5"><div class="dataTables_info" id="dataTable_info" role="status" aria-live="polite">Showing 1 to 10 of 57 entries</div></div><div class="col-sm-12 col-md-7"><div class="dataTables_paginate paging_simple_numbers" id="dataTable_paginate"><ul class="pagination"><li class="paginate_button page-item previous disabled" id="dataTable_previous"><a href="#" aria-controls="dataTable" data-dt-idx="0" tabindex="0" class="page-link">Previous</a></li><li class="paginate_button page-item active"><a href="#" aria-controls="dataTable" data-dt-idx="1" tabindex="0" class="page-link">1</a></li><li class="paginate_button page-item "><a href="#" aria-controls="dataTable" data-dt-idx="2" tabindex="0" class="page-link">2</a></li><li class="paginate_button page-item "><a href="#" aria-controls="dataTable" data-dt-idx="3" tabindex="0" class="page-link">3</a></li><li class="paginate_button page-item "><a href="#" aria-controls="dataTable" data-dt-idx="4" tabindex="0" class="page-link">4</a></li><li class="paginate_button page-item "><a href="#" aria-controls="dataTable" data-dt-idx="5" tabindex="0" class="page-link">5</a></li><li class="paginate_button page-item "><a href="#" aria-controls="dataTable" data-dt-idx="6" tabindex="0" class="page-link">6</a></li><li class="paginate_button page-item next" id="dataTable_next"><a href="#" aria-controls="dataTable" data-dt-idx="7" tabindex="0" class="page-link">Next</a></li></ul></div></div></div></div>
+								<div id="dataTable_wrapper"
+									class="dataTables_wrapper dt-bootstrap4">
+									<div class="datatable-dropdown">
+                                <div class="mb-0">
+                                    <label class="small mb-2"></label>
+                                    <table class="table table-bordered">
+                                        <tbody>
+                                        <tr>
+                                            <th scope="row">
+                                                <label>기술스택</label>
+                                            </th>
+                                            <td>
+                                                <div class="form-check form-check-inline">
+                                                    <label class="form-check-label">Java</label>
+                                                    <div class="badge rounded-pill" style="background-color: #1a1f71; color: white;">Java</div>
+                                                </div>
+
+                                                <div class="form-check form-check-inline">
+                                                    <label class="form-check-label">JAVASCRIPT</label>
+                                                    <div class="badge bg-warning text-white rounded-pill">JAVASCRIPT</div>
+                                                </div>
+
+                                                 <div class="form-check form-check-inline">
+                                                    <label class="form-check-label">Node.js</label>
+                                                    <div class="badge text-white rounded-pill" style="background-color: #00673f;">Node.js</div>
+                                                </div>
+
+                                                <div class="form-check form-check-inline">
+                                                    <label class="form-check-label">Spring</label>
+                                                    <div class="badge bg-info text-white rounded-pill">Spring</div>
+                                                </div>
+
+                                                <div class="form-check form-check-inline">
+                                                    <label class="form-check-label">Python</label>
+                                                    <div class="badge rounded-pill" style="background-color: #8B4513; color: white;">Python</div>
+                                                </div>
+                                            </td>
+
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+
                             </div>
+									<div class="row">
+										<div class="col-sm-12">
+											<table class="table table-bordered dataTable" id="dataTable"
+												width="100%" cellspacing="0" role="grid"
+												aria-describedby="dataTable_info" style="width: 100%;">
+												<thead>
+													<tr role="row">
+														<th class="sorting sorting_asc" tabindex="0"
+															aria-controls="dataTable" rowspan="1" colspan="1">NUM</th>
+														<th class="sorting" tabindex="0" aria-controls="dataTable"
+															rowspan="1" colspan="1">TITLE</th>
+														<th class="sorting" tabindex="0" aria-controls="dataTable"
+															rowspan="1" colspan="1">STACK</th>
+														<th class="sorting" tabindex="0" aria-controls="dataTable"
+															rowspan="1" colspan="1">WRITER</th>
+														<th class="sorting" tabindex="0" aria-controls="dataTable"
+															rowspan="1" colspan="1">REGDATE</th>
+														<th class="sorting" tabindex="0" aria-controls="dataTable"
+															rowspan="1" colspan="1">HIT</th>
+													</tr>
+												</thead>
+
+												<tbody>
+													<c:forEach items="${list}" var="dto">
+														<tr>
+															<td>${dto.num}</td>
+															<td>${dto.title}</td>
+															<td><c:forEach items="${stackList}" var="stackDto">
+																	<c:if test="${dto.num eq stackDto.num}">
+																		<c:forEach items="${stackDto.stackVOs}" var="stackVO">
+    															        ${stackVO.stack}  <c:if test="${not loop.last}">&nbsp;</c:if>
+      																	  </c:forEach>
+																	</c:if>
+																</c:forEach></td>
+															<td>${dto.writer}</td>
+															<td>${dto.regDate}</td>
+															<td>${dto.hit}</td>
+														</tr>
+													</c:forEach>
+												</tbody>
+											</table>
+										</div>
+									</div>
+										<div class="row">
+										<div class="col-sm-6">
+											<form class="row g-3" action="./list" method="get"
+												id="searchForm">
+												<input type="hidden" name="page" value="1" id="page">
+												<div class="col-auto">
+												<label for="kind" class="visually-hidden">Kind </label><select name="kind" id="kind"
+													aria-controls="dataTable"
+													class="custom-select custom-select-sm form-control form-control-sm">
+														<option value="title"
+															${pager.kind eq 'title'?'selected':''}>Title</option>
+														<option value="contents"
+															${pager.kind eq 'contents'?'selected':''}>Contents</option>
+														<option value="writer"
+															${pager.kind eq 'writer'?'selected':''}>Writer</option>
+														</select>
+												</div>
+												<div class="col-auto">
+													<label for="search" class="visually-hidden">Search</label>
+													<input type="text" class="form-control"
+														value="${pager.search}" name="search" id="search"
+														placeholder="검색어를 입력하세요.">
+												</div>
+												<div class="col-auto">
+													<button type="submit" class="btn btn-primary mb-3">검색</button>
+												</div>
+											</form>
+											</div>
+										<div class="col-sm-6">
+											<nav aria-label="Page navigation example">
+												<ul class="pagination ">
+													<li class="page-item "><a class="page-link"
+														href="./list?page=1" aria-label="Previous"
+														data-board-page="1"> <span aria-hidden="true">&laquo;</span>
+													</a></li>
+													<li class="page-item ${pager.pre?'disabled':''}"><a
+														class="page-link"
+														href="./list?page=${pager.startNum-1}&kind=${pager.kind}&search=${pager.search}"
+														aria-label="Previous"
+														data-board-page="${pager.startNum-1}"> <span
+															aria-hidden="true">&lsaquo;</span>
+													</a></li>
+
+													<c:forEach begin="${pager.startNum}" end="${pager.lastNum}"
+														var="i">
+														<li class="page-item"><a class="page-link"
+															href="./list?page=${i}&kind=${pager.kind}&search=${pager.search}"
+															data-board-page="${i}">${i}</a></li>
+													</c:forEach>
+
+													<li
+														class="page-item ${pager.next eq false ? 'disabled' : ''}">
+														<%--${pager.after eq false ? 'disabled' : ''} --%> <a
+														class="page-link"
+														href="./list?page=${pager.lastNum+1}&kind=${pager.kind}&search=${pager.search}"
+														aria-label="Next" data-board-page="${pager.lastNum+1}">
+															<span aria-hidden="true">&rsaquo;</span>
+													</a>
+													</li>
+													<li class="page-item ">
+														<%--${pager.after eq false ? 'disabled' : ''} --%> <a
+														class="page-link"
+														href="./list?page=${pager.totalPage}&kind=${pager.kind}&search=${pager.search}"
+														aria-label="Next" data-board-page="${pager.totalPage}">
+															<span aria-hidden="true">&raquo;</span>
+													</a>
+													</li>
+												</ul>
+											</nav>
+										</div>
+
+										
+										</div>
+									</div>
+								</div>
+							</div>
                         </div>
                     </div>
 
                 </div>
-            </div>
             <!-- End of Main Content -->
 
             <!-- Footer 적용 -->
@@ -211,7 +234,28 @@
     </a>
 
 	<c:import url="../temp/js.jsp"></c:import>
+		<script>
+   	setData('${pager.search}')
+   	const pl = document.getElementsByClassName('page-link');
+   	const searchForm = document.getElementById('searchForm');
+   	const page = document.getElementById('page');
 
+   	//for
+   	//for of --for(꺼낸타입명 변수명: Collection)
+
+   	for(let p of pl){
+   	    p.addEventListener('click',function(e){
+   	        let v = p.getAttribute('data-board-page');
+   	        page.value=v;
+   	        searchForm.submit();
+   	    })
+   	}
+
+   	let data='';
+   	function setData(d){
+   	    data=d;
+   	}
+   	</script>
 </body>
 
 </html>

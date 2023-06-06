@@ -64,14 +64,14 @@ public class BoardController {
 	//list
 		@GetMapping("list")
 		public ModelAndView getList(ModelAndView mv, Pager pager) throws Exception{
-		
-			log.info("search : {}", pager.getSearch());
-			log.info("kind : {}", pager.getKind());
-			
 			List<BoardVO> ar = boardService.getList(pager);
-			
+			List<BoardStackVO> boardStackVO = boardService.getStackList();
 			mv.addObject("list", ar);
+			mv.addObject("stackList", boardStackVO);
 			mv.setViewName("board/list");
+			log.error("search : {}", pager.getSearch());
+			log.error("kind : {}", pager.getKind());
+			log.error("stack : {}", boardStackVO.get(0).getStackVOs().get(0).getStack());
 			return mv;
 		}
 

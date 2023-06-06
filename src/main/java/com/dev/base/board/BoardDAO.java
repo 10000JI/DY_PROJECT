@@ -18,7 +18,7 @@ public interface BoardDAO {
 	public int setStackAdd(String string) throws Exception;
 	
 	//기술리스트
-	public List<StackVO> getStackList() throws Exception;
+	public List<BoardStackVO> getStackList() throws Exception;
 	
 	//전체글리스트
 	public List<BoardVO> getList(Pager pager) throws Exception;

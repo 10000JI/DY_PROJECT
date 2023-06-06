@@ -46,9 +46,8 @@ public class BoardService {
 		return result;
 	}
 	
-	public List<StackVO>  getStackList() throws Exception{
-		List<StackVO> stackVO= boardDAO.getStackList();
-		return stackVO;
+	public List<BoardStackVO>  getStackList() throws Exception{
+		return boardDAO.getStackList();
 	}
 	
 	public List<BoardVO> getList(Pager pager) throws Exception {

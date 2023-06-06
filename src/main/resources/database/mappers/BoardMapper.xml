@@ -4,19 +4,26 @@
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
  <mapper namespace="com.dev.base.board.BoardDAO">
-  	<sql id="search">
- 		<where>
- 			<if test="kind == 'title'">
- 				TITLE LIKE CONCAT('%',#{search},'%')
- 			</if>
- 			<if test="kind == 'contents'">
- 				CONTENTS LIKE CONCAT('%',#{search},'%')
- 			</if>
- 			<if test="kind == 'writer'">
- 				WRITER LIKE CONCAT('%',#{search},'%')
- 			</if>
- 		</where>
- 	</sql>
+<!-- <select id="getList" parameterType="Pager" resultType="BoardVO">
+	SELECT B.*, S.STACK
+	FROM BOARD B
+	LEFT JOIN BOARDSTACK BS ON B.NUM = BS.NUM
+	LEFT JOIN STACK S ON BS.STACKNUM = S.STACKNUM
+	<include refid="search"></include>
+	ORDER BY B.NUM ASC
+	LIMIT #{startRow}, #{perPage}
+</select> -->
+	<sql id="search">
+		<where>
+			<if test="kind == 'title'">
+				TITLE LIKE CONCAT('%',#{search},'%')
+			</if>
+			<if test="kind == 'writer'">
+				WRITER LIKE CONCAT('%',#{search},'%')
+			</if>
+		</where>
+	</sql>
+
  	
  	<insert id="setInsert" parameterType="BoardVO">
  		INSERT INTO BOARD (NUM,TITLE,CONTENTS,WRITER,REGDATE,HIT)
@@ -37,17 +44,26 @@
 	#{stackNum}
 	)
  	</insert>
- 	
- 	<select id="getStackList" resultType="StackVO">
- 		select * from STACK
- 	</select>
   	
-  	 <select id="getList" parameterType="Pager" resultType="BoardVO">
+   	 <select id="getList" parameterType="Pager" resultType="BoardVO">
 		SELECT * FROM BOARD 
 		<include refid="search"></include>
-		ORDER BY NUM DESC
+		ORDER BY NUM ASC
 		LIMIT #{startRow}, #{perPage}
  	</select>
+ 	
+ 	<select id="getStackList" resultMap="getStackResult">
+ 		SELECT S.STACK,BS.NUM FROM BOARDSTACK BS
+		INNER JOIN STACK S ON S.STACKNUM = BS.STACKNUM ORDER BY NUM ASC
+ 	</select> 
+ 	
+ 	<resultMap type="BoardStackVO" id="getStackResult">
+  		<id column="stackNum" property="stackNum"/>
+  			<result column="num" property="num"/>
+		<collection property="stackVOs" javaType="List" ofType="StackVO">
+			<id column="stack" property="stack"/>
+		</collection>
+  	</resultMap>
  	
  	 	<select id="getTotalCount" resultType="Long" parameterType="Pager">
 		SELECT COUNT(NUM) FROM BOARD
@@ -78,6 +94,6 @@
 			<id column="fileNum" property="fileNum"/>
 				<result column="fileName" property="fileName"/>
 				<result column="oriName" property="oriName"/>
-		</collection>  		
+		</collection>
   	</resultMap>
  </mapper>
