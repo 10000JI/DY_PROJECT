@@ -56,4 +56,30 @@ public class BoardService {
 		pager.makeNum(boardDAO.getTotalCount(pager));
 		return boardDAO.getList(pager);
 	}
+	
+	public BoardVO getDetail(BoardVO boardVO) throws Exception{
+		return boardDAO.getDetail(boardVO);
+	}
+	
+	public List<BoardStackVO> getStackDetail(BoardVO boardVO) throws Exception{
+		return boardDAO.getStackDetail(boardVO);
+	}
+	
+	public BoardFileVO getFileDetail(BoardFileVO boardFileVO) throws Exception {
+		// TODO Auto-generated method stub
+		return boardDAO.getFileDetail(boardFileVO);
+	}
+	
+	
+	public int setDelete(BoardVO boardVO,Long fileNum) throws Exception {
+		// TODO Auto-generated method stub
+		int result=0;
+		if(fileNum != null) {
+			result = boardDAO.setBoardFileDelete(fileNum);
+			}
+		result=boardDAO.setStackDelete(boardVO);
+		result = boardDAO.setDelete(boardVO);
+		return result;
+	}
+	
 }

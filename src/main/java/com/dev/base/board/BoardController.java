@@ -74,5 +74,34 @@ public class BoardController {
 			log.error("stack : {}", boardStackVO.get(0).getStackVOs().get(0).getStack());
 			return mv;
 		}
+		
+		@GetMapping("detail")
+		public ModelAndView getDetail(BoardVO boardVO) throws Exception{
+			ModelAndView mv = new ModelAndView();
+			boardVO = boardService.getDetail(boardVO);
+			List<BoardStackVO> boardStackVOs= boardService.getStackDetail(boardVO);
+			mv.addObject("boardVO", boardVO);
+			mv.addObject("boardStackVOs", boardStackVOs);
+			mv.setViewName("board/detail");
+			return mv;
+		}
+		
+		@GetMapping("fileDown")
+		public ModelAndView getFileDown(BoardFileVO boardFileVO) throws Exception{
+			boardFileVO = boardService.getFileDetail(boardFileVO);
+			ModelAndView mv = new ModelAndView();
+			mv.addObject("boardFileVO", boardFileVO);
+			mv.setViewName("fileManager");
+			return mv;
+		}
+		
+		@PostMapping("delete")
+		public ModelAndView setDelete(BoardVO boardVO,Long fileNum) throws Exception {
+			ModelAndView mv = new ModelAndView();
+			int reuslt = boardService.setDelete(boardVO,fileNum);
+			mv.setViewName("redirect:./list");
+			return mv;
+		}
+
 
 }

@@ -119,7 +119,7 @@
 													<c:forEach items="${list}" var="dto">
 														<tr>
 															<td>${dto.num}</td>
-															<td>${dto.title}</td>
+															<td><a href="/board/detail?num=${dto.num}">${dto.title}</a></td>
 															<td><c:forEach items="${stackList}" var="stackDto">
 																	<c:if test="${dto.num eq stackDto.num}">
 																		<c:forEach items="${stackDto.stackVOs}" var="stackVO">

@@ -29,8 +29,20 @@ public interface BoardDAO {
 	//글 디테일
 	public BoardVO getDetail(BoardVO boardVO) throws Exception;
 	
+	//글 디테일 - 기술
+	public List<BoardStackVO> getStackDetail(BoardVO boardVO) throws Exception;
+	
 	//글 디테일-사진
 	public BoardFileVO getFileDetail(BoardFileVO boardFileVO) throws Exception;
 	
+	//글 삭제
+	public int setDelete(BoardVO boardVO) throws Exception;
+	
+	
+	//글 - 첨부파일 삭제
+	public int setBoardFileDelete(Long fileNum) throws Exception;
+	
+	//글 - 기술 삭제
+		public int setStackDelete(BoardVO boardVO) throws Exception;
 	
 }

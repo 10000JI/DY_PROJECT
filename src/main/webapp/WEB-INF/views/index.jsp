@@ -22,21 +22,32 @@
     	<c:import url="./temp/leftHeader.jsp"></c:import>
     	<!-- leftHeader -->
 
-        <!-- Content Wrapper -->
+         <!-- Content Wrapper -->
         <div id="content-wrapper" class="d-flex flex-column">
+
             <!-- Main Content -->
             <div id="content">
+
                 <!-- topHeader -->
     			<c:import url="./temp/topHeader.jsp"></c:import>
-    			<!-- topHeader -->	
-            </div>
+    			<!-- topHeader -->
+				<img alt="" src="/img/310.png">
+				<div style="text-align: center;">
+					<h3>
+						스터디와 프로젝트 모집, <br> 이젠 Future Developer Community에서 확인하세요!
+					</h3>
+				</div>
+
+			</div>
             <!-- End of Main Content -->
 
             <!-- Footer 적용 -->
        		 <c:import url="./temp/footer.jsp"></c:import>
         	<!-- Footer 끝 -->
+
         </div>
         <!-- End of Content Wrapper -->
+
 
     </div>
     <!-- End of Page Wrapper -->

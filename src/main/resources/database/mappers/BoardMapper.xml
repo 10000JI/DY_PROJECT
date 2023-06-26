@@ -48,13 +48,13 @@
    	 <select id="getList" parameterType="Pager" resultType="BoardVO">
 		SELECT * FROM BOARD 
 		<include refid="search"></include>
-		ORDER BY NUM ASC
+		ORDER BY NUM DESC
 		LIMIT #{startRow}, #{perPage}
  	</select>
  	
  	<select id="getStackList" resultMap="getStackResult">
  		SELECT S.STACK,BS.NUM FROM BOARDSTACK BS
-		INNER JOIN STACK S ON S.STACKNUM = BS.STACKNUM ORDER BY NUM ASC
+		INNER JOIN STACK S ON S.STACKNUM = BS.STACKNUM ORDER BY NUM DESC
  	</select> 
  	
  	<resultMap type="BoardStackVO" id="getStackResult">
@@ -79,6 +79,11 @@
 		WHERE NUM=#{num}
  	</select>
  	
+ 	<select id="getStackDetail" parameterType="BoardVO" resultMap="getStackResult"> 
+ 	SELECT S.STACK FROM BOARDSTACK BS
+		INNER JOIN STACK S ON S.STACKNUM = BS.STACKNUM WHERE BS.NUM=#{num}
+	</select>
+ 	
  	<select id="getFileDetail" parameterType="BoardFileVO" resultType="BoardFileVO">
   		SELECT * FROM BOARDFILES WHERE FILENUM=#{fileNum}
   	</select>
@@ -96,4 +101,16 @@
 				<result column="oriName" property="oriName"/>
 		</collection>
   	</resultMap>
+  	
+  	<delete id="setDelete" parameterType="BoardVO">
+ 		DELETE FROM BOARD WHERE NUM=#{num}
+ 	</delete>
+ 	
+ 	<delete id="setBoardFileDelete" parameterType="Long">
+ 		DELETE FROM BOARDFILES WHERE FILENUM=#{fileNum}
+ 	</delete> 
+ 	
+ 	<delete id="setStackDelete" parameterType="BoardVO">
+ 		DELETE FROM BOARDSTACK WHERE NUM=#{num}
+ 	</delete>
  </mapper>
